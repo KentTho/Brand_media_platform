@@ -1,0 +1,72 @@
+name: Django CI - Brand Media Platform
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: brand_media_db
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: 123456
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test_user"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      SECRET_KEY: vantho2200006616
+      DEBUG: True
+      DB_NAME: brand_media_db
+      DB_USER: admin
+      DB_PASSWORD: 123456
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DJANGO_SETTINGS_MODULE: core.settings.dev
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          cd brand-media-platform-be
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🧹 Lint check (flake8)
+        run: |
+          cd brand-media-platform-be
+          flake8 . --exclude=migrations,venv,static,media --max-line-length=120
+
+      - name: 🎨 Code format check (black)
+        run: |
+          cd brand-media-platform-be
+          black --check .
+
+      - name: 🧠 Check migrations
+        run: |
+          cd brand-media-platform-be
+          python manage.py makemigrations --check --dry-run
+
+      - name: 🧪 Run tests
+        run: |
+          cd brand-media-platform-be
+          python manage.py test --verbosity=2

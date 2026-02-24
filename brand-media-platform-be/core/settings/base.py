@@ -2,7 +2,6 @@
 Base settings shared by all environments.
 Clean – maintainable – production-ready foundation.
 """
-
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -10,180 +9,174 @@ from datetime import timedelta
 
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
+# Build paths
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # core/settings → core → project root
 
 # ========================
-# SECURITY
+# SECURITY & BASIC
 # ========================
-
 SECRET_KEY = os.getenv("SECRET_KEY")
-
 if not SECRET_KEY:
-    raise RuntimeError("SECRET_KEY not found in environment variables")
+    raise RuntimeError("SECRET_KEY not found in .env")
 
-DEBUG = False  # Never True in base
+DEBUG = False  # Never True in base – override in dev.py
+
 
 # ========================
 # APPLICATIONS
 # ========================
-
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
     # Third-party
-    "rest_framework",
-    "rest_framework_simplejwt",
-    "django_filters",
-    "parler",
-    "ckeditor",
-    "ckeditor_uploader",
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'django_filters',
+    'parler',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # Local apps
-    "users",
-    "content",
-    "catalog",
-    "newsletter",
+    'users',
+    'content',
+    'catalog',
+    'newsletter',
 ]
-
 
 # ========================
 # MIDDLEWARE
 # ========================
-
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
-ROOT_URLCONF = "core.urls"
-WSGI_APPLICATION = "core.wsgi.application"
+ROOT_URLCONF = 'core.urls'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 # ========================
 # DATABASE
 # ========================
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
-
 
 # ========================
 # AUTH
 # ========================
-
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = 'users.User'
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
 # ========================
-# INTERNATIONALIZATION
+# INTERNATIONALIZATION & PARLER
 # ========================
-
-LANGUAGE_CODE = "vi"
-
+LANGUAGE_CODE = 'vi'
 LANGUAGES = (
-    ("vi", "Vietnamese"),
-    ("en", "English"),
-    ("ru", "Russian"),
-    ("zh", "Chinese"),
-    ("ar", "Arabic"),
+    ('vi', 'Vietnamese'),
+    ('en', 'English'),
+    ('ru', 'Russian'),
+    ('zh', 'Chinese'),
+    ('ar', 'Arabic'),
 )
-
-TIME_ZONE = "UTC"
-
+TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
 PARLER_LANGUAGES = {
     None: (
-        {"code": "vi"},
-        {"code": "en"},
-        {"code": "ru"},
-        {"code": "zh"},
-        {"code": "ar"},
+        {'code': 'vi'}, {'code': 'en'}, {'code': 'ru'},
+        {'code': 'zh'}, {'code': 'ar'},
     ),
-    "default": {
-        "fallback": "vi",
-        "hide_untranslated": False,
-    },
+    'default': {'fallback': 'vi', 'hide_untranslated': False},
 }
-
 
 # ========================
 # STATIC & MEDIA
 # ========================
-
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ========================
-# REST FRAMEWORK
+# REST FRAMEWORK + JWT + CACHE + LOGGING
 # ========================
-
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
     ],
-    "DEFAULT_THROTTLE_RATES": {
-        "anon": "100/hour",
-        "user": "1000/hour",
-        "tracking": "200/hour",
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/hour',
+        'user': '1000/hour',
+        'tracking': '200/hour',
     },
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
 
-# Logging (chung)
+# Caching (Redis production-ready – sẽ override ở prod/dev nếu cần)
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+# Logging
 import os
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'verbose': {'format': '{levelname} {asctime} {module} {message}', 'style': '{'},
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
     },
     'handlers': {
         'file': {
@@ -194,17 +187,23 @@ LOGGING = {
             'backupCount': 5,
             'formatter': 'verbose',
         },
-        'console': {'level': 'INFO', 'class': 'logging.StreamHandler'},
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
     },
     'loggers': {
-        'django': {'handlers': ['file', 'console'], 'level': 'INFO', 'propagate': True},
-        'performance': {'handlers': ['file'], 'level': 'DEBUG'},
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'performance': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
     },
 }
-
-CKEDITOR_UPLOAD_PATH = "uploads/"
-SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
-
 # MIDDLEWARE bổ sung (nếu có BehaviorTrackingMiddleware)
 MIDDLEWARE += ['core.middleware.BehaviorTrackingMiddleware']  # nếu bạn đã tạo
 # Trong phần ALLOWED_HOSTS
