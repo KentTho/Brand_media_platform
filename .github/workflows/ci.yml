@@ -10,31 +10,16 @@ jobs:
   test-and-lint:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15               # ← Dùng 15 thay vì 17 để ổn định
-        env:
-          POSTGRES_DB: brand_media_db
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: 123456
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U admin"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-          --health-start-period=10s      # ← Thêm để chờ container start
-
     env:
       SECRET_KEY: testsecretkeyfordevonly
       DEBUG: True
-      DB_NAME: brand_media_db
-      DB_USER: admin
-      DB_PASSWORD: 123456
+      DB_NAME: test_db
+      DB_USER: test_user
+      DB_PASSWORD: test_password
       DB_HOST: localhost
       DB_PORT: 5432
       DJANGO_SETTINGS_MODULE: core.settings.dev
+      DATABASE_URL: sqlite:///test.db   # ← Dùng SQLite cho CI ổn định
 
     steps:
       - name: 📥 Checkout code
@@ -51,7 +36,7 @@ jobs:
           cd brand-media-platform-be
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install flake8 black pytest pytest-django   # ← Đảm bảo install
+          pip install flake8 black pytest pytest-django
 
       - name: 🧹 Lint check (flake8)
         run: |
