@@ -2,58 +2,68 @@ name: Django CI - Brand Media Platform
 
 on:
   push:
-    branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main", "develop"]
 
 jobs:
   test-and-lint:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: brand_media_db
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: 123456
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     env:
-      SECRET_KEY: testsecretkeyfordevonly
-      DEBUG: True
-      DB_NAME: test_db
-      DB_USER: test_user
-      DB_PASSWORD: test_password
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DB_NAME: brand_media_db
+      DB_USER: admin
+      DB_PASSWORD: 123456
       DB_HOST: localhost
       DB_PORT: 5432
       DJANGO_SETTINGS_MODULE: core.settings.dev
-      DATABASE_URL: sqlite:///test.db   # ← Dùng SQLite cho CI ổn định
 
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: 🐍 Setup Python 3.12
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: 'pip'
 
-      - name: 📦 Install dependencies + CI tools
+      - name: Install dependencies
         run: |
           cd brand-media-platform-be
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install flake8 black pytest pytest-django
 
-      - name: 🧹 Lint check (flake8)
+      - name: Wait for PostgreSQL
         run: |
-          cd brand-media-platform-be
-          flake8 . --exclude=migrations,venv,static,media,logs --max-line-length=120
+          until pg_isready -h localhost -p 5432; do
+            sleep 2
+          done
 
-      - name: 🎨 Code format check (black)
+      - name: Run black
         run: |
           cd brand-media-platform-be
           black --check .
 
-      - name: 🧠 Check migrations
+      - name: Run flake8
+        run: |
+          cd brand-media-platform-be
+          flake8 . --exclude=migrations,venv,static,media --max-line-length=120
+
+      - name: Check migrations
         run: |
           cd brand-media-platform-be
           python manage.py makemigrations --check --dry-run
 
-      - name: 🧪 Run tests
+      - name: Run tests
         run: |
           cd brand-media-platform-be
-          python manage.py test --verbosity=2
+          python manage.py test
