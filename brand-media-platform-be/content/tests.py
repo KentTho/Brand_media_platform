@@ -1,14 +1,23 @@
-# content/tests.py
 from django.test import TestCase
+from django.contrib.auth import get_user_model
 from .models import Article
+
+User = get_user_model()
 
 
 class ArticleModelTest(TestCase):
-    """
-    Tests for Article model.
-    Why: Ensure relations and defaults work, reduce future bugs.
-    """
+
+    def setUp(self):
+        self.user = User.objects.create_user(
+            email="test@example.com",
+            password="password123"
+        )
 
     def test_default_status(self):
-        article = Article.objects.create(title="Test", content="Body")
-        self.assertEqual(article.status, "draft")  # Check default
+        article = Article.objects.create(
+            title="Test",
+            content="Body",
+            author=self.user  # 🔥 FIX ở đây
+        )
+
+        self.assertEqual(article.status, "draft")
