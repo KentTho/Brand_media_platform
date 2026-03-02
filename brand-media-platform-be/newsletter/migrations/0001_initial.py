@@ -7,21 +7,49 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='NewsletterSubscriber',
+            name="NewsletterSubscriber",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(db_index=True, max_length=254, unique=True)),
-                ('full_name', models.CharField(blank=True, max_length=100)),
-                ('status', models.CharField(choices=[('active', 'Subscribed'), ('unsubscribed', 'Unsubscribed'), ('bounced', 'Bounced')], default='active', max_length=20)),
-                ('source', models.CharField(blank=True, help_text='Đăng ký từ Footer hay Popup?', max_length=100)),
-                ('is_verified', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(db_index=True, max_length=254, unique=True),
+                ),
+                ("full_name", models.CharField(blank=True, max_length=100)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("active", "Subscribed"),
+                            ("unsubscribed", "Unsubscribed"),
+                            ("bounced", "Bounced"),
+                        ],
+                        default="active",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "source",
+                    models.CharField(
+                        blank=True,
+                        help_text="Đăng ký từ Footer hay Popup?",
+                        max_length=100,
+                    ),
+                ),
+                ("is_verified", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
         ),
     ]

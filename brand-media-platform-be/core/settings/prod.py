@@ -1,7 +1,9 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'support.pavietnam.vn,yourdomain.com').split(',') # thay yourdomain.com
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "support.pavietnam.vn,yourdomain.com").split(
+    ","
+)  # thay yourdomain.com
 
 
 # Security settings cho production

@@ -11,95 +11,158 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('content', '0001_initial'),
+        ("content", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='article',
-            name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='articles', to=settings.AUTH_USER_MODEL),
+            model_name="article",
+            name="author",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="articles",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddField(
-            model_name='articletranslation',
-            name='master',
-            field=parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='content.article'),
+            model_name="articletranslation",
+            name="master",
+            field=parler.fields.TranslationsForeignKey(
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="translations",
+                to="content.article",
+            ),
         ),
         migrations.AddField(
-            model_name='category',
-            name='parent',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='children', to='content.category'),
+            model_name="category",
+            name="parent",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="children",
+                to="content.category",
+            ),
         ),
         migrations.AddField(
-            model_name='article',
-            name='category',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='articles', to='content.category'),
+            model_name="article",
+            name="category",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="articles",
+                to="content.category",
+            ),
         ),
         migrations.AddField(
-            model_name='categorytranslation',
-            name='master',
-            field=parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='content.category'),
+            model_name="categorytranslation",
+            name="master",
+            field=parler.fields.TranslationsForeignKey(
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="translations",
+                to="content.category",
+            ),
         ),
         migrations.AddField(
-            model_name='comment',
-            name='article',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='content.article'),
+            model_name="comment",
+            name="article",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="comments",
+                to="content.article",
+            ),
         ),
         migrations.AddField(
-            model_name='comment',
-            name='parent',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='replies', to='content.comment'),
+            model_name="comment",
+            name="parent",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="replies",
+                to="content.comment",
+            ),
         ),
         migrations.AddField(
-            model_name='comment',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="comment",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='article',
-            name='tags',
-            field=models.ManyToManyField(blank=True, related_name='articles', to='content.tag'),
+            model_name="article",
+            name="tags",
+            field=models.ManyToManyField(
+                blank=True, related_name="articles", to="content.tag"
+            ),
         ),
         migrations.AddField(
-            model_name='tagtranslation',
-            name='master',
-            field=parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='content.tag'),
+            model_name="tagtranslation",
+            name="master",
+            field=parler.fields.TranslationsForeignKey(
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="translations",
+                to="content.tag",
+            ),
         ),
         migrations.AddField(
-            model_name='article',
-            name='topics',
-            field=models.ManyToManyField(blank=True, related_name='articles', to='content.topic'),
+            model_name="article",
+            name="topics",
+            field=models.ManyToManyField(
+                blank=True, related_name="articles", to="content.topic"
+            ),
         ),
         migrations.AddField(
-            model_name='topictranslation',
-            name='master',
-            field=parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='content.topic'),
+            model_name="topictranslation",
+            name="master",
+            field=parler.fields.TranslationsForeignKey(
+                editable=False,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="translations",
+                to="content.topic",
+            ),
         ),
         migrations.AddField(
-            model_name='userbehavior',
-            name='article',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='behaviors', to='content.article'),
+            model_name="userbehavior",
+            name="article",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="behaviors",
+                to="content.article",
+            ),
         ),
         migrations.AddField(
-            model_name='userbehavior',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="userbehavior",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterUniqueTogether(
-            name='articletranslation',
-            unique_together={('language_code', 'master')},
+            name="articletranslation",
+            unique_together={("language_code", "master")},
         ),
         migrations.AlterUniqueTogether(
-            name='categorytranslation',
-            unique_together={('language_code', 'master')},
+            name="categorytranslation",
+            unique_together={("language_code", "master")},
         ),
         migrations.AlterUniqueTogether(
-            name='tagtranslation',
-            unique_together={('language_code', 'master')},
+            name="tagtranslation",
+            unique_together={("language_code", "master")},
         ),
         migrations.AlterUniqueTogether(
-            name='topictranslation',
-            unique_together={('language_code', 'master')},
+            name="topictranslation",
+            unique_together={("language_code", "master")},
         ),
     ]

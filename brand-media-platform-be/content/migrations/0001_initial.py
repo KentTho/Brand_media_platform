@@ -9,163 +9,322 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(allow_unicode=True, max_length=255, unique=True)),
-                ('cover_image', models.ImageField(upload_to=content.models.article_image_path)),
-                ('reading_time', models.PositiveIntegerField(default=0, help_text='Minutes')),
-                ('view_count', models.PositiveIntegerField(db_index=True, default=0)),
-                ('is_featured', models.BooleanField(default=False)),
-                ('status', models.CharField(choices=[('draft', 'Draft'), ('review', 'Review'), ('published', 'Published'), ('archived', 'Archived')], db_index=True, default='draft', max_length=20)),
-                ('published_at', models.DateTimeField(blank=True, db_index=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(allow_unicode=True, max_length=255, unique=True),
+                ),
+                (
+                    "cover_image",
+                    models.ImageField(upload_to=content.models.article_image_path),
+                ),
+                (
+                    "reading_time",
+                    models.PositiveIntegerField(default=0, help_text="Minutes"),
+                ),
+                ("view_count", models.PositiveIntegerField(db_index=True, default=0)),
+                ("is_featured", models.BooleanField(default=False)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("draft", "Draft"),
+                            ("review", "Review"),
+                            ("published", "Published"),
+                            ("archived", "Archived"),
+                        ],
+                        db_index=True,
+                        default="draft",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "published_at",
+                    models.DateTimeField(blank=True, db_index=True, null=True),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("deleted_at", models.DateTimeField(blank=True, null=True)),
             ],
             options={
-                'ordering': ['-published_at'],
+                "ordering": ["-published_at"],
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='ArticleTranslation',
+            name="ArticleTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('title', models.CharField(max_length=255)),
-                ('excerpt', models.TextField(help_text='Đoạn tóm tắt hiển thị trên Card')),
-                ('content', models.TextField()),
-                ('seo_title', models.CharField(blank=True, max_length=255)),
-                ('seo_description', models.TextField(blank=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                (
+                    "excerpt",
+                    models.TextField(help_text="Đoạn tóm tắt hiển thị trên Card"),
+                ),
+                ("content", models.TextField()),
+                ("seo_title", models.CharField(blank=True, max_length=255)),
+                ("seo_description", models.TextField(blank=True)),
             ],
             options={
-                'verbose_name': 'article Translation',
-                'db_table': 'content_article_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
+                "verbose_name": "article Translation",
+                "db_table": "content_article_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(allow_unicode=True, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(allow_unicode=True, unique=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name_plural': 'Categories',
+                "verbose_name_plural": "Categories",
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='CategoryTranslation',
+            name="CategoryTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=255, verbose_name='Tên danh mục')),
-                ('description', models.TextField(blank=True, verbose_name='Mô tả')),
-                ('seo_title', models.CharField(blank=True, max_length=255)),
-                ('seo_description', models.TextField(blank=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="Tên danh mục")),
+                ("description", models.TextField(blank=True, verbose_name="Mô tả")),
+                ("seo_title", models.CharField(blank=True, max_length=255)),
+                ("seo_description", models.TextField(blank=True)),
             ],
             options={
-                'verbose_name': 'category Translation',
-                'db_table': 'content_category_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
+                "verbose_name": "category Translation",
+                "db_table": "content_category_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
-                ('is_approved', models.BooleanField(default=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.TextField()),
+                ("is_approved", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'ordering': ['created_at'],
+                "ordering": ["created_at"],
             },
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(allow_unicode=True, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(allow_unicode=True, unique=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='TagTranslation',
+            name="TagTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
             options={
-                'verbose_name': 'tag Translation',
-                'db_table': 'content_tag_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
+                "verbose_name": "tag Translation",
+                "db_table": "content_tag_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='Topic',
+            name="Topic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(unique=True)),
-                ('is_featured', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                ("is_featured", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='TopicTranslation',
+            name="TopicTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=255)),
-                ('description', models.TextField(blank=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("description", models.TextField(blank=True)),
             ],
             options={
-                'verbose_name': 'topic Translation',
-                'db_table': 'content_topic_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
+                "verbose_name": "topic Translation",
+                "db_table": "content_topic_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='UserBehavior',
+            name="UserBehavior",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('session_key', models.CharField(blank=True, db_index=True, max_length=40, null=True)),
-                ('action', models.CharField(choices=[('view', 'View'), ('scroll', 'Scroll'), ('like', 'Like'), ('save', 'Save'), ('share', 'Share'), ('click_product', 'Click Product')], db_index=True, max_length=20)),
-                ('scroll_depth', models.IntegerField(default=0, help_text='% trang đã đọc')),
-                ('time_spent', models.IntegerField(default=0, help_text='Số giây on-site')),
-                ('source', models.CharField(blank=True, help_text='Đến từ FB, Google, Email...', max_length=50)),
-                ('device', models.CharField(blank=True, max_length=50)),
-                ('meta_data', models.JSONField(blank=True, default=dict)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "session_key",
+                    models.CharField(
+                        blank=True, db_index=True, max_length=40, null=True
+                    ),
+                ),
+                (
+                    "action",
+                    models.CharField(
+                        choices=[
+                            ("view", "View"),
+                            ("scroll", "Scroll"),
+                            ("like", "Like"),
+                            ("save", "Save"),
+                            ("share", "Share"),
+                            ("click_product", "Click Product"),
+                        ],
+                        db_index=True,
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "scroll_depth",
+                    models.IntegerField(default=0, help_text="% trang đã đọc"),
+                ),
+                (
+                    "time_spent",
+                    models.IntegerField(default=0, help_text="Số giây on-site"),
+                ),
+                (
+                    "source",
+                    models.CharField(
+                        blank=True,
+                        help_text="Đến từ FB, Google, Email...",
+                        max_length=50,
+                    ),
+                ),
+                ("device", models.CharField(blank=True, max_length=50)),
+                ("meta_data", models.JSONField(blank=True, default=dict)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

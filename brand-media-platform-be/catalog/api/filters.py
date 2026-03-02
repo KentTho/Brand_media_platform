@@ -2,7 +2,9 @@
 Product filters (manual style like you).
 Why: Simple, no extra dependency; easy to test and extend (add eco_score later).
 """
+
 from django.db.models import Q
+
 
 def filter_products(queryset, request):
     material_slug = request.query_params.get("material")

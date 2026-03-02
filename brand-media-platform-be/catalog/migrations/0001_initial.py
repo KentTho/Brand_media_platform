@@ -11,89 +11,197 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('content', '0002_initial'),
+        ("content", "0002_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(unique=True)),
-                ('eco_score', models.PositiveIntegerField(default=100, help_text='Điểm xanh (0-100)')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                (
+                    "eco_score",
+                    models.PositiveIntegerField(
+                        default=100, help_text="Điểm xanh (0-100)"
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(unique=True)),
-                ('image', models.ImageField(upload_to='products/covers/')),
-                ('external_link', models.URLField(blank=True, help_text='Link mua hàng trên Shopee/Lazada/Web hãng')),
-                ('is_featured', models.BooleanField(default=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('material', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='products', to='catalog.material')),
-                ('related_articles', models.ManyToManyField(blank=True, related_name='related_products', to='content.article')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                ("image", models.ImageField(upload_to="products/covers/")),
+                (
+                    "external_link",
+                    models.URLField(
+                        blank=True,
+                        help_text="Link mua hàng trên Shopee/Lazada/Web hãng",
+                    ),
+                ),
+                ("is_featured", models.BooleanField(default=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "material",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="products",
+                        to="catalog.material",
+                    ),
+                ),
+                (
+                    "related_articles",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="related_products",
+                        to="content.article",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
             bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='ProductImage',
+            name="ProductImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='products/gallery/')),
-                ('alt_text', models.CharField(blank=True, max_length=255)),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery', to='catalog.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", models.ImageField(upload_to="products/gallery/")),
+                ("alt_text", models.CharField(blank=True, max_length=255)),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="gallery",
+                        to="catalog.product",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='MaterialTranslation',
+            name="MaterialTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=200)),
-                ('description', models.TextField()),
-                ('sustainability_report', models.TextField(blank=True, help_text='Chi tiết về tác động môi trường')),
-                ('master', parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='catalog.material')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("description", models.TextField()),
+                (
+                    "sustainability_report",
+                    models.TextField(
+                        blank=True, help_text="Chi tiết về tác động môi trường"
+                    ),
+                ),
+                (
+                    "master",
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="translations",
+                        to="catalog.material",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'material Translation',
-                'db_table': 'catalog_material_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
-                'unique_together': {('language_code', 'master')},
+                "verbose_name": "material Translation",
+                "db_table": "catalog_material_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
+                "unique_together": {("language_code", "master")},
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),
         migrations.CreateModel(
-            name='ProductTranslation',
+            name="ProductTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=255)),
-                ('story', models.TextField(help_text='Câu chuyện sản phẩm (Storytelling)')),
-                ('description', models.TextField(help_text='Thông số kỹ thuật')),
-                ('specifications', models.JSONField(blank=True, default=dict)),
-                ('master', parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='catalog.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "story",
+                    models.TextField(help_text="Câu chuyện sản phẩm (Storytelling)"),
+                ),
+                ("description", models.TextField(help_text="Thông số kỹ thuật")),
+                ("specifications", models.JSONField(blank=True, default=dict)),
+                (
+                    "master",
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="translations",
+                        to="catalog.product",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'product Translation',
-                'db_table': 'catalog_product_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
-                'unique_together': {('language_code', 'master')},
+                "verbose_name": "product Translation",
+                "db_table": "catalog_product_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
+                "unique_together": {("language_code", "master")},
             },
             bases=(parler.models.TranslatedFieldsModelMixin, models.Model),
         ),

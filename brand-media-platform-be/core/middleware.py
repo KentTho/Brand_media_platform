@@ -2,6 +2,7 @@
 from django.utils import timezone
 from content.models import Article, UserBehavior
 
+
 class BehaviorTrackingMiddleware:
     """
     Middleware to track basic user behavior.
@@ -9,27 +10,30 @@ class BehaviorTrackingMiddleware:
     Easy to extend for more actions (e.g., via signals or JS beacons).
     Reduces bug by handling anonymous users via session.
     """
+
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
         response = self.get_response(request)
-        if request.path.startswith('/articles/') and request.method == 'GET':  # Assume URL pattern
+        if (
+            request.path.startswith("/articles/") and request.method == "GET"
+        ):  # Assume URL pattern
             try:
-                article_id = int(request.path.split('/')[-1])  # Edge case: validate ID
+                article_id = int(request.path.split("/")[-1])  # Edge case: validate ID
                 article = Article.objects.get(id=article_id)
                 article.view_count += 1
-                article.save(update_fields=['view_count'])
+                article.save(update_fields=["view_count"])
 
                 # Log behavior (anonymous OK via session)
                 UserBehavior.objects.create(
                     user=request.user if request.user.is_authenticated else None,
                     session_key=request.session.session_key,
                     article=article,
-                    action='view',
-                    source=request.META.get('HTTP_REFERER', 'direct'),
-                    device='mobile' if request.user_agent.is_mobile else 'desktop',
-                    created_at=timezone.now()
+                    action="view",
+                    source=request.META.get("HTTP_REFERER", "direct"),
+                    device="mobile" if request.user_agent.is_mobile else "desktop",
+                    created_at=timezone.now(),
                 )
             except (ValueError, Article.DoesNotExist):
                 pass  # Silent fail to reduce bug impact
