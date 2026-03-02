@@ -49,6 +49,8 @@ jobs:
           python manage.py makemigrations --check --dry-run
 
       - name: 🧪 Run tests
+        env:
+          CI: 'true'
         run: |
           cd brand-media-platform-be
           python manage.py test --verbosity=2

@@ -69,17 +69,27 @@ WSGI_APPLICATION = "core.wsgi.application"
 # ========================
 # DATABASE
 # ========================
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
-    }
-}
 
+if os.getenv("CI") == "true":
+    # CI environment → lightweight DB
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": ":memory:",
+        }
+    }
+else:
+    # Default → PostgreSQL (dev/prod)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("DB_NAME", "brand_media_db"),
+            "USER": os.getenv("DB_USER", "postgres"),
+            "PASSWORD": os.getenv("DB_PASSWORD", "postgres"),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": os.getenv("DB_PORT", "5432"),
+        }
+    }
 # ========================
 # AUTH
 # ========================
@@ -229,8 +239,8 @@ LOGGING = {
     },
 }
 
-LOGS_DIR = os.path.join(BASE_DIR, "logs")
-os.makedirs(LOGS_DIR, exist_ok=True)
+LOGS_DIR = BASE_DIR / "logs"
+LOGS_DIR.mkdir(exist_ok=True)
 
 # MIDDLEWARE bổ sung (nếu có BehaviorTrackingMiddleware)
 MIDDLEWARE += ["core.middleware.BehaviorTrackingMiddleware"]  # nếu bạn đã tạo
