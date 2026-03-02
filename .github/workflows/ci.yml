@@ -10,31 +10,12 @@ jobs:
   test-and-lint:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_DB: brand_media_db
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: 123456
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U admin"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-          --health-start-period=15s     # Chờ container khởi động lâu hơn
-
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DEBUG: True
-      DB_NAME: brand_media_db
-      DB_USER: admin
-      DB_PASSWORD: 123456
-      DB_HOST: postgres          # ← Quan trọng: dùng tên service
-      DB_PORT: 5432
       DJANGO_SETTINGS_MODULE: core.settings.dev
+      # Dùng SQLite cho CI để ổn định 100% (không Docker issue)
+      DATABASE_URL: sqlite:///test.db
 
     steps:
       - name: 📥 Checkout code
@@ -51,16 +32,7 @@ jobs:
           cd brand-media-platform-be
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install flake8 black pytest pytest-django   # ← BẮT BUỘC
-
-      - name: ⏳ Wait for PostgreSQL
-        run: |
-          cd brand-media-platform-be
-          until pg_isready -h postgres -p 5432 -U admin; do
-            echo "Waiting for PostgreSQL..."
-            sleep 3
-          done
-          echo "PostgreSQL is ready!"
+          pip install flake8 black pytest pytest-django
 
       - name: 🎨 Code format check (black)
         run: |
