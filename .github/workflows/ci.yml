@@ -1,48 +1,55 @@
-name: Django CI
+name: Django CI - Brand Media Platform
 
 on:
   push:
-    branches: ["main", "develop"]
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  test:
+  test-and-lint:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_DB: brand_media_db
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: 123456
-
     env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DB_NAME: brand_media_db
-      DB_USER: admin
-      DB_PASSWORD: 123456
-      DB_HOST: postgres
-      DB_PORT: 5432
+      SECRET_KEY: testsecretkeyfordevonly
+      DEBUG: True
       DJANGO_SETTINGS_MODULE: core.settings.dev
+      # Dùng SQLite cho CI để ổn định 100% (không Docker issue)
+      DATABASE_URL: sqlite:///test.db
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: 🐍 Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: 'pip'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies + CI tools
         run: |
           cd brand-media-platform-be
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install flake8 black pytest pytest-django
 
-      - name: Run migrations
+      - name: 🎨 Code format check (black)
         run: |
           cd brand-media-platform-be
-          python manage.py migrate
+          black --check .
 
-      - name: Run tests
+      - name: 🧹 Lint check (flake8)
         run: |
           cd brand-media-platform-be
-          python manage.py test
+          flake8 . --exclude=migrations,venv,static,media,logs --max-line-length=120
+
+      - name: 🧠 Check migrations
+        run: |
+          cd brand-media-platform-be
+          python manage.py makemigrations --check --dry-run
+
+      - name: 🧪 Run tests
+        run: |
+          cd brand-media-platform-be
+          python manage.py test --verbosity=2
