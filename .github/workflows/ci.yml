@@ -14,8 +14,7 @@ jobs:
       SECRET_KEY: testsecretkeyfordevonly
       DEBUG: True
       DJANGO_SETTINGS_MODULE: core.settings.dev
-      # Dùng SQLite cho CI để ổn định 100% (không Docker issue)
-      DATABASE_URL: sqlite:///test.db
+      DATABASE_URL: sqlite:///test.db   # SQLite cho CI ổn định
 
     steps:
       - name: 📥 Checkout code
@@ -42,7 +41,7 @@ jobs:
       - name: 🧹 Lint check (flake8)
         run: |
           cd brand-media-platform-be
-          flake8 . --exclude=migrations,venv,static,media,logs --max-line-length=120
+          flake8 .
 
       - name: 🧠 Check migrations
         run: |
