@@ -210,6 +210,10 @@ LOGGING = {
         },
     },
 }
+
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
+os.makedirs(LOGS_DIR, exist_ok=True)
+
 # MIDDLEWARE bổ sung (nếu có BehaviorTrackingMiddleware)
 MIDDLEWARE += ["core.middleware.BehaviorTrackingMiddleware"]  # nếu bạn đã tạo
 # Trong phần ALLOWED_HOSTS
