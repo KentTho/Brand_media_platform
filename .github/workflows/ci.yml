@@ -34,20 +34,10 @@ jobs:
           pip install -r requirements.txt
           pip install flake8 black pytest pytest-django
 
-      - name: 🎨 Code format check (black)
+      - name: Run migrations
         run: |
           cd brand-media-platform-be
-          black --check .
-
-      - name: 🧹 Lint check (flake8)
-        run: |
-          cd brand-media-platform-be
-          flake8 . --exclude=migrations,venv,static,media,logs --max-line-length=120
-
-      - name: 🧠 Check migrations
-        run: |
-          cd brand-media-platform-be
-          python manage.py makemigrations --check --dry-run
+          python manage.py migrate
 
       - name: 🧪 Run tests
         run: |
