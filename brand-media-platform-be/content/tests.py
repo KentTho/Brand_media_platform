@@ -9,15 +9,12 @@ class ArticleModelTest(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            email="test@example.com",
-            password="password123"
+            email="test@example.com", password="password123"
         )
 
     def test_default_status(self):
         article = Article.objects.create(
-            title="Test",
-            content="Body",
-            author=self.user  # 🔥 FIX ở đây
+            title="Test", content="Body", author=self.user  # 🔥 FIX ở đây
         )
 
         self.assertEqual(article.status, "draft")
