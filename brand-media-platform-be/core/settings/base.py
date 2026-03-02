@@ -174,7 +174,6 @@ CACHES = {
 }
 
 # Logging
-import os
 
 LOGGING = {
     "version": 1,
