@@ -37,6 +37,8 @@ class ProductDetailSerializer(TranslatableModelSerializer):
             "story",
             "description",
             "specifications",
+            "seo_title",
+            "seo_description",
             "image",
             "external_link",
             "is_featured",

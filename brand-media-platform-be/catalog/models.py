@@ -27,6 +27,8 @@ class Product(TranslatableModel):
         specifications=models.JSONField(
             default=dict, blank=True
         ),  # Lưu size, màu dạng JSON
+        seo_title=models.CharField(max_length=255, blank=True),
+        seo_description=models.TextField(blank=True),
     )
 
     slug = models.SlugField(unique=True, db_index=True)
@@ -37,7 +39,6 @@ class Product(TranslatableModel):
 
     # Ảnh đại diện chính
     image = models.ImageField(upload_to="products/covers/")
-
     # Link Affiliate/Mua hàng (Quan trọng cho Brand Media)
     external_link = models.URLField(
         blank=True, help_text="Link mua hàng trên Shopee/Lazada/Web hãng"

@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "首页",
+    "journal": "日志",
+    "materials": "材料",
+    "products": "产品",
+    "lifestyle": "生活方式",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "slogan": "真实触感，真实情感",
+    "editorial_tag": "社论 · 2026年春季",
+    "headline_pre": "缓慢穿着自然的",
+    "headline_post": "宁静艺术。",
+    "read_story": "阅读故事",
+    "scroll": "滚动"
+  },
+  "newsletter": {
+    "title": "值得慢慢阅读的故事。",
+    "subtitle": "每月一次接收新文章、材料故事和季节性反思。",
+    "placeholder": "您的邮箱",
+    "button": "订阅",
+    "thanks": "感谢您——我们很快会给您写信。"
+  },
+  "journal": {
+    "read_narrative": "阅读叙事",
+    "read_article": "阅读文章"
+  },
+  "featured": {
+    "read_story": "阅读故事"
+  },
+  "footer": {
+    "description": "一个致力于亚麻、工艺和可持续生活的慢速编辑平台。",
+    "journal_col": "日志",
+    "brand_col": "品牌",
+    "material_stories": "材料故事",
+    "slow_living": "慢生活",
+    "craft_culture": "工艺文化",
+    "sustainability": "可持续性",
+    "about_us": "关于DKFS",
+    "our_philosophy": "我们的理念",
+    "products": "产品",
+    "contact": "联系我们",
+    "copyright": "© 2026 DKFS · 复古自然 · 版权所有",
+    "language_col": "语言"
+  },
+  "language_switcher": {
+    "label": "语言"
+  },
+  "sections": {
+    "manifesto": "DKFS宣言"
+  }
+}

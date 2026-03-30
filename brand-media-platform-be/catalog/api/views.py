@@ -3,7 +3,7 @@ Product Public API views.
 Why: Same pattern as Article API for consistency; manual filter (your style) + prefetch/select_related.
 Multilingual with ?lang=; response wrapper reused but matches your count/results style.
 """
-
+from django.views.decorators.vary import vary_on_headers
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from parler.utils.context import switch_language
 from django.utils.translation import gettext_lazy as _
@@ -12,7 +12,8 @@ from .serializers import ProductListSerializer, ProductDetailSerializer
 from .filters import filter_products
 from content.api.pagination import StandardResultsSetPagination  # Reuse
 from content.api.response import success_response, error_response
-
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 @method_decorator(cache_page(60 * 10), name="dispatch")  # Cache 10 phút
 @method_decorator(

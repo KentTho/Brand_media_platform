@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:ital,wght@1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* === HEADER/FOOTER DARK PALETTE === */
+  /* These are used by Header (bg-primary-container) and Footer */
+  --color-primary: #1A3C34;
+  --color-primary-container: #1A3C34;
+  --color-on-primary: #e8eeec;
+  --color-on-primary-container: #8cb8b0;
+  
+  --color-secondary: #3b5c4f;
+  --color-secondary-container: #b9d8ca;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #2b453a;
+
+  /* === MAIN CONTENT LIGHT PALETTE (original) === */
+  --color-background: #ffffff;
+  --color-on-background: #1A3C34;
+  
+  --color-surface: #FCFDC5;
+  --color-on-surface: #1A3C34;
+  
+  --color-surface-variant: #F4F5B3;
+  --color-on-surface-variant: #2A4C40;
+  
+  --color-outline: #6d8479;
+  --color-outline-variant: #bdcec5;
+  
+  --color-surface-container-highest: #E8E8EB;
+  --color-surface-container-high: #EAEAEF;
+  --color-surface-container: #ECECF0;
+  --color-surface-container-low: #F6F6F9;
+  --color-surface-container-lowest: #ffffff;
+
+  
+  --font-headline: "Noto Serif", serif;
+  --font-body: "Inter", "sans-serif";
+  --font-label: "Inter", "sans-serif";
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Inter", "sans-serif";
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    scroll-behavior: smooth;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-surface-container); }
+::-webkit-scrollbar-thumb { background: var(--color-secondary); border-radius: 4px; }

@@ -1,12 +1,16 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "support.pavietnam.vn,yourdomain.com").split(
-    ","
-)  # thay yourdomain.com
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "yourdomain.com").split(",")
 
+# CORS cho production
+CORS_ALLOWED_ORIGINS = os.getenv(
+    "CORS_ALLOWED_ORIGINS",
+    "https://yourdomain.com"
+).split(",")
+CORS_ALLOW_CREDENTIALS = True
 
-# Security settings cho production
+# Security settings
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True

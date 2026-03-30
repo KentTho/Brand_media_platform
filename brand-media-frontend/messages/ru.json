@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Главная",
+    "journal": "Журнал",
+    "materials": "Материалы",
+    "products": "Продукты",
+    "lifestyle": "Стиль жизни",
+    "about": "О нас",
+    "contact": "Контакты"
+  },
+  "hero": {
+    "slogan": "Настоящее прикосновение, настоящие эмоции",
+    "editorial_tag": "РЕДАКЦИЯ · ВЕСНА 2026",
+    "headline_pre": "Тихое искусство",
+    "headline_post": "медленно.",
+    "read_story": "ЧИТАТЬ ИСТОРИЮ",
+    "scroll": "ПРОКРУТИТЬ"
+  },
+  "newsletter": {
+    "title": "Истории, достойные медленного чтения.",
+    "subtitle": "Получайте новые статьи, истории о материалах и сезонные размышления — раз в месяц.",
+    "placeholder": "Ваш email",
+    "button": "Подписаться",
+    "thanks": "Спасибо — мы скоро напишем вам."
+  },
+  "journal": {
+    "read_narrative": "Читать историю",
+    "read_article": "Читать статью"
+  },
+  "featured": {
+    "read_story": "Читать историю"
+  },
+  "footer": {
+    "description": "Медленная редакционная платформа, посвящённая льну, ремеслу и устойчивому образу жизни.",
+    "journal_col": "Журнал",
+    "brand_col": "Бренд",
+    "material_stories": "Истории о материалах",
+    "slow_living": "Медленная жизнь",
+    "craft_culture": "Культура ремесла",
+    "sustainability": "Устойчивость",
+    "about_us": "О DKFS",
+    "our_philosophy": "Наша философия",
+    "products": "Продукты",
+    "contact": "Контакты",
+    "copyright": "© 2026 DKFS · Vintage Nature · Все права защищены",
+    "language_col": "Язык"
+  },
+  "language_switcher": {
+    "label": "Язык"
+  },
+  "sections": {
+    "manifesto": "Манифест DKFS"
+  }
+}

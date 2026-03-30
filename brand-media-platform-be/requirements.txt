@@ -8,6 +8,7 @@ colorama==0.4.6
 coverage==7.13.4
 Django==5.2.10
 django-ckeditor==6.7.3
+django-cors-headers==4.9.0
 django-filter==25.2
 django-js-asset==3.1.2
 django-parler==2.3

@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Home",
+    "journal": "Journal",
+    "materials": "Materials",
+    "products": "Products",
+    "lifestyle": "Lifestyle",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slogan": "Real touch real emotions",
+    "editorial_tag": "EDITORIAL · SPRING 2026",
+    "headline_pre": "The quiet art of",
+    "headline_post": "slowly.",
+    "read_story": "READ THE STORY",
+    "scroll": "SCROLL"
+  },
+  "newsletter": {
+    "title": "Stories worth reading slowly.",
+    "subtitle": "Receive new articles, material stories, and seasonal reflections — once a month, no more.",
+    "placeholder": "Your email",
+    "button": "Subscribe",
+    "thanks": "Thank you — we will write to you soon."
+  },
+  "journal": {
+    "read_narrative": "Read Narrative",
+    "read_article": "Read Article"
+  },
+  "featured": {
+    "read_story": "Read Story"
+  },
+  "footer": {
+    "description": "A slow editorial platform dedicated to linen, craft, and sustainable living.",
+    "journal_col": "Journal",
+    "brand_col": "Brand",
+    "material_stories": "Material Stories",
+    "slow_living": "Slow Living",
+    "craft_culture": "Craft Culture",
+    "sustainability": "Sustainability",
+    "about_us": "About DKFS",
+    "our_philosophy": "Our Philosophy",
+    "products": "Products",
+    "contact": "Contact",
+    "copyright": "© 2026 DKFS · Vintage Nature · All rights reserved",
+    "language_col": "Language"
+  },
+  "language_switcher": {
+    "label": "Language"
+  },
+  "sections": {
+    "manifesto": "DKFS Manifesto"
+  }
+}

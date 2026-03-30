@@ -1,0 +1,79 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "tertiary-container": "#3c3a34",
+        "primary-fixed": "#c7e9e7",
+        "on-secondary": "#ffffff",
+        "error": "#ba1a1a",
+        "primary": "#062928",
+        "primary-container": "#1f3f3e",
+        "surface-container-high": "#e9e8e4",
+        "on-error-container": "#93000a",
+        "surface": "#faf9f5",
+        "on-tertiary-container": "#a8a49b",
+        "on-tertiary-fixed": "#1d1c16",
+        "secondary-fixed": "#c1eae9",
+        "inverse-surface": "#30312e",
+        "outline-variant": "#c1c8c7",
+        "surface-variant": "#e3e2df",
+        "surface-dim": "#dbdad6",
+        "background": "#faf9f5",
+        "on-primary": "#ffffff",
+        "secondary": "#3e6564",
+        "primary-fixed-dim": "#abcdcb",
+        "on-error": "#ffffff",
+        "on-primary-container": "#89aaa8",
+        "on-secondary-container": "#436968",
+        "inverse-on-surface": "#f2f1ed",
+        "on-secondary-fixed": "#00201f",
+        "on-tertiary-fixed-variant": "#494740",
+        "secondary-container": "#bee8e6",
+        "on-background": "#1b1c1a",
+        "surface-tint": "#446463",
+        "surface-container": "#efeeea",
+        "outline": "#717878",
+        "on-surface": "#1b1c1a",
+        "on-tertiary": "#ffffff",
+        "tertiary": "#26241f",
+        "error-container": "#ffdad6",
+        "surface-bright": "#faf9f5",
+        "secondary-fixed-dim": "#a5cecc",
+        "tertiary-fixed-dim": "#cbc6bd",
+        "surface-container-highest": "#e3e2df",
+        "on-secondary-fixed-variant": "#264d4c",
+        "tertiary-fixed": "#e7e2d9",
+        "surface-container-low": "#f5f4f0",
+        "inverse-primary": "#abcdcb",
+        "on-surface-variant": "#414848",
+        "surface-container-lowest": "#ffffff",
+        "on-primary-fixed": "#00201f",
+        "on-primary-fixed-variant": "#2c4c4b"
+      },
+      fontFamily: {
+        "headline": ["Noto Serif", "serif"],
+        "body": ["Inter", "sans-serif"],
+        "label": ["Inter", "sans-serif"],
+        "serif": ["Noto Serif", "serif"],
+        "sans": ["Inter", "sans-serif"]
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config

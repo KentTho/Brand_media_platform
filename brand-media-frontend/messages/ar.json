@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "journal": "المجلة",
+    "materials": "المواد",
+    "products": "المنتجات",
+    "lifestyle": "أسلوب الحياة",
+    "about": "حولنا",
+    "contact": "اتصل بنا"
+  },
+  "hero": {
+    "slogan": "لمسة حقيقية، مشاعر حقيقية",
+    "editorial_tag": "افتتاحية · ربيع 2026",
+    "headline_pre": "الفن الهادئ في",
+    "headline_post": "ببطء.",
+    "read_story": "اقرأ القصة",
+    "scroll": "تمرير"
+  },
+  "newsletter": {
+    "title": "قصص تستحق القراءة ببطء.",
+    "subtitle": "احصل على مقالات جديدة وقصص المواد والتأملات الموسمية — مرة في الشهر.",
+    "placeholder": "بريدك الإلكتروني",
+    "button": "يشترك",
+    "thanks": "شكراً لك — سنكتب إليك قريباً."
+  },
+  "journal": {
+    "read_narrative": "إقرأ القصة",
+    "read_article": "اقرأ المقال"
+  },
+  "featured": {
+    "read_story": "اقرأ القصة"
+  },
+  "footer": {
+    "description": "منصة تحريرية بطيئة مخصصة للكتان والحرفة وأسلوب الحياة المستدام.",
+    "journal_col": "المجلة",
+    "brand_col": "العلامة التجارية",
+    "material_stories": "قصص المواد",
+    "slow_living": "الحياة البطيئة",
+    "craft_culture": "ثقافة الحرف",
+    "sustainability": "الاستدامة",
+    "about_us": "حول DKFS",
+    "our_philosophy": "فلسفتنا",
+    "products": "المنتجات",
+    "contact": "اتصل بنا",
+    "copyright": "© 2026 DKFS · الطبيعة الكلاسيكية · جميع الحقوق محفوظة",
+    "language_col": "اللغة"
+  },
+  "language_switcher": {
+    "label": "اللغة"
+  },
+  "sections": {
+    "manifesto": "بيان DKFS"
+  }
+}

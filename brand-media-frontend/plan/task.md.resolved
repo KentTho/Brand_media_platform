@@ -1,0 +1,6 @@
+- `[x]` 1. Nâng cấp thanh điều hướng (`Header.tsx`) thành nền sáng, hiệu ứng kính mờ (glassmorphism), chữ màu tối.
+- `[ ]` 2. Thêm dữ liệu bài viết (Journal Data) vào `src/data/mockData.ts` hỗ trợ đa ngôn ngữ.
+- `[ ]` 3. Thêm các từ khoá dịch thuật vào `messages/*.json` cho trang Journal.
+- `[ ]` 4. Tạo Component lưới tạp chí `src/components/journal/EditorialGrid.tsx` với hiệu ứng FadeIn, hover phóng to.
+- `[ ]` 5. Tạo page `src/app/[locale]/journal/page.tsx` và cấu trúc giao diện trang Journal.
+- `[ ]` 6. Kiểm tra lại toàn bộ và tạo Walkthrough.

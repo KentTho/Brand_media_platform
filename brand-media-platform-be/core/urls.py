@@ -15,23 +15,38 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+# core/urls.py
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    # Chúng ta sẽ thêm các path cho API ở các giai đoạn sau
-]
-# ... các import cũ ...
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 # Tùy chỉnh Admin Site
 admin.site.site_header = "Brand Media Platform Admin"
 admin.site.site_title = "BMP Admin Portal"
 admin.site.index_title = "Welcome to Brand Media Editorial Board"
 
-# Đoạn này cực kỳ quan trọng để hiển thị ảnh trong lúc code
+urlpatterns = [
+    path("admin/", admin.site.urls),
+
+    path("api/v1/", include([
+        # Auth
+        path("auth/", include("users.api.urls")),
+        path("auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+        path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+
+        # Public content
+        path("public/", include("content.api.urls")),
+        path("public/catalog/", include("catalog.api.urls")),
+        path("public/newsletter/", include("newsletter.api.urls")),
+    ])),
+]
+
+# Serve media/static trong lúc dev
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

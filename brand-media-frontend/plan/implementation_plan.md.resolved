@@ -1,0 +1,60 @@
+# Kế hoạch Triển khai Trang "Journal: Editorial Grid"
+
+Mục tiêu: Đưa thiết kế "Journal: Editorial Grid" từ dự án Stitch vào website `brand-media-frontend` với đầy đủ tính năng đa ngôn ngữ, hoạt ảnh cao cấp (Cutom FadeIn & Hover Zoom), đồng thời cập nhật giao diện của thanh điều hướng (Header).
+
+## User Review Required
+
+> [!IMPORTANT]
+> - Vui lòng xác nhận rằng **Header** sẽ đổi sang nền sáng (`bg-surface`) và chữ màu tối (`text-primary`) trên **toàn bộ website** (không chỉ riêng trang Journal). Nếu bạn chỉ muốn đổi Header ở trang Journal, vui lòng phản hồi lại.
+> - URL của trang mới sẽ là `/journal` (tương ứng với `/vi/journal`, `/en/journal`, v.v.).
+
+## Proposed Changes
+
+---
+
+### UI Components (Trang Journal)
+
+#### [NEW] `src/components/journal/JournalHero.tsx`
+- Component phần đầu (Hero) của trang Journal, áp dụng `FadeIn`.
+
+#### [NEW] `src/components/journal/EditorialGrid.tsx`
+- Component hiển thị danh sách bài báo/tạp chí dạng lưới (Grid) bất đối xứng theo thiết kế Stitch.
+- Quấn các thành phần ảnh với `group-hover:scale-[1.04]` và `duration-[2000ms]`. Cùng với hiệu ứng `FadeIn` trôi từ dưới lên.
+
+---
+
+### Layout & Navigation
+
+#### [MODIFY] `src/components/layout/Header.tsx`
+- Đổi class `bg-primary text-white` thành `bg-surface text-primary`.
+- Đổi màu mũi tên Dropdown và các thành phần bên trong để thống nhất với tông màu sáng.
+
+---
+
+### Data & Translations
+
+#### [MODIFY] `src/data/mockData.ts`
+- Thêm section `journalData` chứa nội dung tĩnh của các bài báo (tiêu đề, excerpt, ảnh giả lập).
+
+#### [MODIFY] `messages/vi.json`, `en.json`, `ru.json`, `zh.json`, `ar.json`
+- Thêm toàn bộ các khoá Dịch thuật phục vụ cho trang Journal (ví dụ: `Journal.Hero.title`, `Journal.Articles.readMore`).
+
+---
+
+### Pages (Routing)
+
+#### [NEW] `src/app/[locale]/journal/page.tsx`
+- Route phục vụ trang Journal, sử dụng `useTranslations` và các Component `JournalHero`, `EditorialGrid` vừa tạo.
+
+## Open Questions
+
+> [!WARNING]
+> Mình sẽ tái sử dụng các hình ảnh có sẵn trong thư mục `public/images` để thay cho ảnh gốc của bản thiết kế Stitch (nhằm tiết kiệm tài nguyên và đồng bộ). Nếu bạn có ảnh cụ thể cho trang Journal, hãy cho mình biết nhé!
+
+## Verification Plan
+### Manual Verification
+- Truy cập vào `/vi/journal` trên trình duyệt để kiểm tra cấu trúc layout (bất đối xứng, khoảng trắng).
+- Rê chuột lên các hình ảnh bài báo để xem hiệu ứng zoom 2 giây mượt mà.
+- Cuộn chuột xuống để kiểm tra các phần tử hiện lên (Fade In).
+- Đổi ngôn ngữ từ tiếng Việt sang tiếng khác xem nội dung có thay đổi hoàn toàn hay không.
+- Kiểm tra lại Header xem đã sáng màu và dễ đọc với Dropdown như yêu cầu chưa.

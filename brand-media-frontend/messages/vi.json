@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "journal": "Tạp chí",
+    "materials": "Chất liệu",
+    "products": "Sản phẩm",
+    "lifestyle": "Lối sống",
+    "about": "Về chúng tôi",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "slogan": "Chạm thật – Cảm xúc thật",
+    "editorial_tag": "XÃ LUẬN · MÙA XUÂN 2026",
+    "headline_pre": "Nghệ thuật lặng lẽ của",
+    "headline_post": "chậm rãi.",
+    "read_story": "ĐỌC CÂU CHUYỆN",
+    "scroll": "KÉO XUỐNG"
+  },
+  "newsletter": {
+    "title": "Những câu chuyện đáng đọc chậm.",
+    "subtitle": "Nhận bài viết mới, câu chuyện về chất liệu và suy nghĩ theo mùa — mỗi tháng một lần.",
+    "placeholder": "Email của bạn",
+    "button": "Đăng ký",
+    "thanks": "Cảm ơn bạn — chúng tôi sẽ viết thư cho bạn sớm thôi."
+  },
+  "journal": {
+    "read_narrative": "Đọc câu chuyện",
+    "read_article": "Đọc thêm"
+  },
+  "featured": {
+    "read_story": "Đọc câu chuyện"
+  },
+  "footer": {
+    "description": "Nền tảng biên tập chậm dành riêng cho vải lanh, thủ công và lối sống bền vững.",
+    "journal_col": "Tạp chí",
+    "brand_col": "Thương hiệu",
+    "material_stories": "Câu chuyện vật liệu",
+    "slow_living": "Sống chậm",
+    "craft_culture": "Văn hóa thủ công",
+    "sustainability": "Bền vững",
+    "about_us": "Về DKFS",
+    "our_philosophy": "Triết lý của chúng tôi",
+    "products": "Sản phẩm",
+    "contact": "Liên hệ",
+    "copyright": "© 2026 DKFS · Thiên nhiên cổ điển · Bảo lưu mọi quyền",
+    "language_col": "Ngôn ngữ"
+  },
+  "language_switcher": {
+    "label": "Ngôn ngữ"
+  },
+  "sections": {
+    "manifesto": "Tuyên ngôn DKFS"
+  }
+}

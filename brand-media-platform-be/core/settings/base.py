@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third-party
+    "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
     "django_filters",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 # MIDDLEWARE
 # ========================
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -245,7 +247,3 @@ LOGS_DIR.mkdir(exist_ok=True)
 # MIDDLEWARE bổ sung (nếu có BehaviorTrackingMiddleware)
 MIDDLEWARE += ["core.middleware.BehaviorTrackingMiddleware"]  # nếu bạn đã tạo
 # Trong phần ALLOWED_HOSTS
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
-
-# Thêm dòng này ở cuối file base.py
-# Production sẽ override ở prod.py
