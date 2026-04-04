@@ -32,18 +32,29 @@ admin.site.index_title = "Welcome to Brand Media Editorial Board"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
-    path("api/v1/", include([
-        # Auth
-        path("auth/", include("users.api.urls")),
-        path("auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-        path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-
-        # Public content
-        path("public/", include("content.api.urls")),
-        path("public/catalog/", include("catalog.api.urls")),
-        path("public/newsletter/", include("newsletter.api.urls")),
-    ])),
+    path(
+        "api/v1/",
+        include(
+            [
+                # Auth
+                path("auth/", include("users.api.urls")),
+                path(
+                    "auth/token/",
+                    TokenObtainPairView.as_view(),
+                    name="token_obtain_pair",
+                ),
+                path(
+                    "auth/token/refresh/",
+                    TokenRefreshView.as_view(),
+                    name="token_refresh",
+                ),
+                # Public content
+                path("public/", include("content.api.urls")),
+                path("public/catalog/", include("catalog.api.urls")),
+                path("public/newsletter/", include("newsletter.api.urls")),
+            ]
+        ),
+    ),
 ]
 
 # Serve media/static trong lúc dev

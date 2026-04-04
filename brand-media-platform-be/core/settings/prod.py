@@ -5,8 +5,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "yourdomain.com").split(",")
 
 # CORS cho production
 CORS_ALLOWED_ORIGINS = os.getenv(
-    "CORS_ALLOWED_ORIGINS",
-    "https://yourdomain.com"
+    "CORS_ALLOWED_ORIGINS", "https://yourdomain.com"
 ).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
