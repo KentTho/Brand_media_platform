@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { getMockData } from '@/data/mockData';
-import FadeIn from '@/components/ui/FadeIn';
 
 export default function LifestyleHero() {
   const locale = useLocale();

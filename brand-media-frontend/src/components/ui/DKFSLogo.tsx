@@ -1,7 +1,6 @@
 // components/DKFSLogo.tsx
 'use client';
 import '../app/globals.css';
-import { useEffect } from 'react';
 
 interface DKFSLogoProps {
   size?: number;
@@ -99,7 +98,7 @@ export default function DKFSLogo({
       <div className="mt-1 text-center">
         <div
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: 'var(--font-serif)',
             fontSize: size * 0.55,
             fontWeight: 700,
             color,
@@ -111,7 +110,7 @@ export default function DKFSLogo({
         </div>
         <div
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: 'var(--font-body)',
             fontSize: size * 0.22,
             fontStyle: 'italic',
             color: '#E6D7B9',

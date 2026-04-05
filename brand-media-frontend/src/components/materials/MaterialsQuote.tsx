@@ -20,7 +20,7 @@ export default function MaterialsQuote() {
               className="text-outline/20 select-none flex-shrink-0 leading-none"
               style={{ fontSize: 'clamp(4rem, 8vw, 7rem)', fontFamily: 'Noto Serif, serif', lineHeight: 0.8 }}
             >
-              "
+              &ldquo;
             </span>
             <div className="space-y-4 md:space-y-6">
               <p

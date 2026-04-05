@@ -1,12 +1,11 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { Inter, Noto_Serif } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "../globals.css";
 import type { Metadata } from "next";
 
-const locales = ["vi", "en", "ru", "zh", "ar"];
+const locales = ["vi", "en", "ru", "zh", "ar"] as const;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -16,18 +15,6 @@ export const metadata: Metadata = {
   title: "DKFS – Real touch real emotions",
   description: "Brand Media Platform",
 };
-
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export default async function LocaleLayout({
   children,
@@ -45,10 +32,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="scroll-smooth">
-      <body className={`${notoSerif.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
-            {children}
+          {children}
           <Footer />
         </NextIntlClientProvider>
       </body>
