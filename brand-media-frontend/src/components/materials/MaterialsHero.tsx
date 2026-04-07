@@ -63,7 +63,7 @@ export default function MaterialsHero() {
               />
             </div>
             {/* Decorative offset block — desktop only */}
-            <div className="hidden lg:block absolute -bottom-6 -right-6 w-1/2 h-1/2 bg-surface-container -z-10"></div>
+            <div className="hidden lg:block absolute -bottom-6 -right-6 w-1/2 h-1/2 bg-accent-cool -z-10"></div>
           </FadeIn>
         </div>
       </div>

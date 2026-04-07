@@ -30,7 +30,7 @@ export default function EditorialSections() {
                 />
               </div>
             </FadeIn>
-            <div className="hidden lg:block absolute -bottom-12 -right-12 w-2/3 h-2/3 bg-surface-container-high -z-10"></div>
+            <div className="hidden lg:block absolute -bottom-12 -right-12 w-2/3 h-2/3 bg-accent-warm -z-10"></div>
           </div>
           <div className="order-1 lg:order-2 space-y-5 md:space-y-8 max-w-xl">
             <FadeIn direction="up" delay={0.1}>
@@ -68,7 +68,7 @@ export default function EditorialSections() {
                 />
               </div>
             </FadeIn>
-            <div className="hidden lg:block absolute -top-12 -left-12 w-2/3 h-2/3 bg-primary-container/10 -z-10"></div>
+            <div className="hidden lg:block absolute -top-12 -left-12 w-2/3 h-2/3 bg-accent-cool -z-10"></div>
           </div>
         </div>
 

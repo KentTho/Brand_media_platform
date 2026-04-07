@@ -43,7 +43,7 @@ export default function ProductsFeatured() {
               <span className="text-[9px] tracking-[0.35em] text-on-primary uppercase">{featuredProduct.artifactNo}</span>
             </div>
             {/* Decorative offset — desktop */}
-            <div className="hidden lg:block absolute -bottom-8 -right-8 w-1/2 h-1/2 bg-surface-container -z-10" />
+            <div className="hidden lg:block absolute -bottom-8 -right-8 w-1/2 h-1/2 bg-accent-cool -z-10" />
           </FadeIn>
 
           {/* Right: Editorial narrative text */}

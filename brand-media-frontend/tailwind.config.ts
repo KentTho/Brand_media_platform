@@ -56,7 +56,9 @@ const config: Config = {
         "on-surface-variant": "#414848",
         "surface-container-lowest": "#ffffff",
         "on-primary-fixed": "#00201f",
-        "on-primary-fixed-variant": "#2c4c4b"
+        "on-primary-fixed-variant": "#2c4c4b",
+        "accent-warm": "#fdfbbe",
+        "accent-cool": "#e8e8ea"
       },
       fontFamily: {
         "headline": ["Noto Serif", "serif"],

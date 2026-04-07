@@ -13,7 +13,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
-      <main className="min-h-screen pt-24 bg-background w-full">
+      <main className="min-h-screen bg-background w-full">
         <EditorialHero />
         <FeaturedArticle />
         <EditorialSections />

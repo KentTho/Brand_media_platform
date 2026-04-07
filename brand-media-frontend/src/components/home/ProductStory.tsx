@@ -17,7 +17,7 @@ export default function ProductStory() {
       <FadeIn direction="up">
         <div className="max-w-[1920px] mx-auto px-6 md:px-12 text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-serif text-primary mb-3 md:mb-4">{productStory.title}</h2>
-          <p className="text-outline uppercase tracking-widest text-xs">{productStory.artifactRef}</p>
+          <p className="text-accent-cool uppercase tracking-widest text-xs">{productStory.artifactRef}</p>
         </div>
       </FadeIn>
       
@@ -36,7 +36,7 @@ export default function ProductStory() {
         </FadeIn>
         
         <FadeIn direction="up" delay={0.2} className="md:h-full">
-          <div className="overflow-hidden flex flex-col justify-center bg-surface-container p-8 md:p-12 space-y-4 md:space-y-6 md:h-full">
+          <div className="overflow-hidden flex flex-col justify-center bg-accent-warm/20 p-8 md:p-12 space-y-4 md:space-y-6 md:h-full">
             <p className="text-on-surface-variant leading-relaxed italic text-base md:text-lg text-left">
               {productStory.description}
             </p>

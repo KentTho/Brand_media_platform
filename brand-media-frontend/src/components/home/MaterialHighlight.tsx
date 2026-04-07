@@ -15,7 +15,7 @@ export default function MaterialHighlight() {
 
   return (
     <section className="py-16 md:py-32 px-6 md:px-12 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto bg-surface-container-highest p-8 md:p-24 rounded-sm flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div className="max-w-[1400px] mx-auto bg-gradient-to-br from-surface-container-highest to-accent-cool/20 p-8 md:p-24 rounded-sm flex flex-col md:flex-row items-center gap-10 md:gap-16">
         <div className="flex-1 space-y-6 md:space-y-8 w-full">
           <FadeIn direction="up">
             <span className="text-xs md:text-sm tracking-widest text-outline uppercase">{materialHighlight.tag}</span>
@@ -30,7 +30,7 @@ export default function MaterialHighlight() {
           </FadeIn>
           <FadeIn direction="up" delay={0.3}>
             <div className="flex gap-4">
-              <div className="w-12 h-px bg-primary mt-4"></div>
+              <div className="w-12 h-px bg-accent-warm mt-4"></div>
               <p className="text-primary font-medium">DKFS Manifesto</p>
             </div>
           </FadeIn>

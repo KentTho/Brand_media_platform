@@ -28,7 +28,7 @@ export default function FeaturedArticle() {
         </FadeIn>
         <div className="lg:col-span-5 space-y-6 md:space-y-8 lg:pl-12">
           <FadeIn direction="up" delay={0.1}>
-            <span className="text-xs md:text-sm tracking-[0.3em] uppercase text-outline">{featuredArticle.tag}</span>
+            <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase bg-accent-cool/50 text-outline px-4 py-2">{featuredArticle.tag}</span>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <h2 className="text-3xl md:text-5xl font-serif leading-tight text-primary">{featuredArticle.title}</h2>

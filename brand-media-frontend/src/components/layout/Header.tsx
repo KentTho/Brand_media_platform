@@ -58,9 +58,27 @@ export default function Header() {
       <header className="fixed top-0 w-full z-[100] bg-primary-container/90 backdrop-blur-xl border-b border-on-primary/5 shadow-[0_10px_40px_rgba(0,0,0,0.3)] transition-all">
         <nav className="flex justify-between items-center px-6 md:px-12 py-4 md:py-5 max-w-[1920px] mx-auto">
 
-          {/* Logo */}
-          <Link href="/" className="font-serif text-xl md:text-2xl tracking-tighter text-on-primary font-bold hover:opacity-70 transition-opacity">
-            DKFS
+          <Link href="/" className="group flex items-baseline tracking-tighter transition-all duration-300 hover:scale-110 z-50">
+            <span 
+              className="font-serif text-3xl md:text-4xl font-black bg-gradient-to-b from-[#FFD700] via-[#FDFBBE] to-[#B8860B] bg-clip-text text-transparent"
+              style={{ 
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(1px 1px 0px #8A6623) drop-shadow(2px 2px 0px #5E4514) drop-shadow(4px 4px 8px rgba(0,0,0,0.8))'
+              }}
+            >
+              DKF
+            </span>
+            <span 
+              className="font-serif text-xl md:text-2xl font-black bg-gradient-to-b from-[#FFD700] via-[#FDFBBE] to-[#B8860B] bg-clip-text text-transparent ml-[2px]"
+              style={{ 
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(1px 1px 0px #8A6623) drop-shadow(2px 2px 0px #5E4514) drop-shadow(4px 4px 8px rgba(0,0,0,0.8))'
+              }}
+            >
+              s
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -221,7 +239,7 @@ export default function Header() {
               <div className="w-10 h-10 rounded-full overflow-hidden relative ring-2 ring-on-primary/20">
                 <Image alt="DKFS Logo" className="object-cover" src="/images/logo-icon.jpg" fill sizes="40px" />
               </div>
-              <span className="font-serif text-on-primary/40 text-sm">DKFS · Vintage Nature</span>
+              <span className="font-serif text-accent-warm/60 text-sm italic tracking-wide">DKFs · Vintage Nature</span>
             </motion.div>
           </motion.div>
         )}

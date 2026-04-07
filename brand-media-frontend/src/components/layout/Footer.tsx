@@ -12,7 +12,28 @@ export default function Footer() {
         
         {/* Brand description — full width on mobile */}
         <div className="col-span-2 space-y-5 md:space-y-8">
-          <div className="font-serif text-2xl md:text-3xl text-on-primary">DKFS</div>
+          <Link href="/" className="group flex items-baseline tracking-tighter transition-all duration-300 hover:scale-110 inline-block">
+            <span 
+              className="font-serif text-3xl md:text-4xl font-black bg-gradient-to-b from-[#FFD700] via-[#FDFBBE] to-[#B8860B] bg-clip-text text-transparent"
+              style={{ 
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(1px 1px 0px #8A6623) drop-shadow(2px 2px 0px #5E4514) drop-shadow(4px 4px 8px rgba(0,0,0,0.8))'
+              }}
+            >
+              DKF
+            </span>
+            <span 
+              className="font-serif text-xl md:text-2xl font-black bg-gradient-to-b from-[#FFD700] via-[#FDFBBE] to-[#B8860B] bg-clip-text text-transparent ml-[2px]"
+              style={{ 
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(1px 1px 0px #8A6623) drop-shadow(2px 2px 0px #5E4514) drop-shadow(4px 4px 8px rgba(0,0,0,0.8))'
+              }}
+            >
+              s
+            </span>
+          </Link>
           <p className="font-serif text-sm md:text-base leading-[1.8] text-on-primary/60 max-w-md">
             {t('description')}
           </p>

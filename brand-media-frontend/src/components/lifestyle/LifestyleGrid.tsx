@@ -33,7 +33,7 @@ export default function LifestyleGrid() {
                 />
                 {/* Featured badge */}
                 <div className="absolute top-5 left-5 bg-primary/90 backdrop-blur-sm px-3 py-1.5">
-                  <span className="text-[9px] tracking-[0.3em] uppercase text-on-primary">{featured.tag}</span>
+                  <span className="text-[9px] tracking-[0.3em] uppercase text-accent-warm font-bold">{featured.tag}</span>
                 </div>
               </div>
               {/* Text */}
@@ -61,7 +61,7 @@ export default function LifestyleGrid() {
 
         {/* Quote */}
         <FadeIn direction="up">
-          <div className="border-l-2 border-primary/30 pl-6 md:pl-10 max-w-2xl mx-auto py-2">
+          <div className="border-l-4 border-accent-cool pl-6 md:pl-10 max-w-2xl mx-auto py-2">
             <p className="font-serif italic text-on-surface-variant text-base md:text-xl leading-relaxed">
               {lifestylePage.quote}
             </p>

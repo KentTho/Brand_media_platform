@@ -38,8 +38,8 @@ export default function EditorialGrid() {
                   </div>
                 </FadeIn>
                 {isEven 
-                  ? <div className="hidden lg:block absolute -bottom-12 -right-12 w-2/3 h-2/3 bg-surface-container-high -z-10"></div>
-                  : <div className="hidden lg:block absolute -top-12 -left-12 w-2/3 h-2/3 bg-primary-container/10 -z-10"></div>
+                  ? <div className="hidden lg:block absolute -bottom-12 -right-12 w-2/3 h-2/3 bg-accent-warm -z-10"></div>
+                  : <div className="hidden lg:block absolute -top-12 -left-12 w-2/3 h-2/3 bg-accent-cool -z-10"></div>
                 }
               </div>
 

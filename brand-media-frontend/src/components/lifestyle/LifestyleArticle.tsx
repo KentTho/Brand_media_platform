@@ -90,7 +90,7 @@ export default function LifestyleArticle() {
 
         {/* Pull quote */}
         <FadeIn direction="up" delay={0.2}>
-          <blockquote className="my-12 md:my-16 py-8 md:py-10 px-6 md:px-10 bg-surface-container border-l-4 border-primary">
+          <blockquote className="my-12 md:my-16 py-8 md:py-10 px-6 md:px-10 bg-accent-warm/30 border-l-4 border-primary">
             <p
               className="font-serif italic text-primary leading-relaxed"
               style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)' }}

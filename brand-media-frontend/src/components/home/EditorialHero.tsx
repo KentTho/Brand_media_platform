@@ -21,7 +21,7 @@ export default function EditorialHero() {
   if (!hero) return null;
 
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
+    <section className="relative min-h-screen flex items-end overflow-hidden bg-[#0a1f1b]">
       {/* Background image with parallax */}
       <motion.div 
         initial={{ scale: 1.08 }}

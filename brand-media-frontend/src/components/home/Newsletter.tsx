@@ -59,7 +59,7 @@ export default function Newsletter() {
                 required
               />
               <button 
-                className="bg-on-primary text-primary uppercase tracking-[0.18em] text-[11px] font-bold px-7 py-4 hover:bg-on-primary/90 transition-colors cursor-pointer flex-shrink-0" 
+                className="bg-accent-warm text-primary uppercase tracking-[0.18em] text-[11px] font-bold px-7 py-4 hover:bg-white transition-colors cursor-pointer flex-shrink-0" 
                 type="submit"
               >
                 {t('button')}

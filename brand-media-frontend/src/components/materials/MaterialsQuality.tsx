@@ -28,7 +28,7 @@ export default function MaterialsQuality() {
               />
             </div>
             {/* Decorative offset — desktop only */}
-            <div className="hidden lg:block absolute -top-6 -left-6 w-1/2 h-1/2 bg-surface-container -z-10"></div>
+            <div className="hidden lg:block absolute -top-6 -left-6 w-1/2 h-1/2 bg-accent-cool/50 -z-10"></div>
           </FadeIn>
 
           {/* Right: Text content — shows first on mobile */}
